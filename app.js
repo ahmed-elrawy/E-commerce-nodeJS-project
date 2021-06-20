@@ -4,10 +4,20 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+
+
 const app = express();
 const bp = require('body-parser');
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
+
+
+app.use(cors({
+  origin: "*",
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
+  allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept',
+
+}))
 
 //Import Routes
 const productsRoute = require('./routes/products');
@@ -24,11 +34,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 
-app.use(cors({
-  origin: "*",
-  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
-  allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
-}))
 
 app.use(logger('dev'));
 

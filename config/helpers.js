@@ -5,7 +5,7 @@ let conn = new MySqli({
     post: 3306,  //port, default 3306 
     user: 'root',  //user name 
     passwd: '',  //password 
-    db: 'mega-shop'  // You can specify the database or not [optional] 
+    db: 'mega-shop-2'  // You can specify the database or not [optional] 
 });
 
 let db = conn.emit(false, '');
